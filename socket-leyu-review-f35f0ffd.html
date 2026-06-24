@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>leyu · 内容与连接的另一种可能</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f7f4ed;
+      font-family: "Noto Serif SC", "Source Han Serif SC", "Palatino", "Times New Roman", serif;
+      color: #2e2a24;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 880px;
+      margin: 0 auto;
+      background: rgba(255, 252, 245, 0.75);
+      backdrop-filter: blur(1px);
+      border-radius: 40px 40px 32px 32px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.03), 0 4px 12px rgba(0, 0, 0, 0.02);
+      padding: 2.8rem 2rem 3.2rem;
+    }
+
+    @media (max-width: 540px) {
+      .page {
+        padding: 2rem 1.2rem;
+        border-radius: 28px;
+      }
+    }
+
+    /* --- hero / 主视觉 --- */
+    .hero {
+      border-left: 4px solid #b8a68b;
+      padding-left: 1.6rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: #1f1b16;
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero .sub {
+      font-size: 1.05rem;
+      color: #726a5e;
+      border-top: 1px solid #ddd6cb;
+      padding-top: 0.75rem;
+      margin-top: 0.2rem;
+    }
+
+    @media (max-width: 540px) {
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+    }
+
+    /* --- 引文块 / 提示框变体 --- */
+    .notebox {
+      background: #f0ece3;
+      border-radius: 24px;
+      padding: 1.5rem 2rem;
+      margin: 2.2rem 0;
+      font-size: 0.95rem;
+      border: 1px solid #e1d9cd;
+      box-shadow: inset 0 1px 4px rgba(255, 250, 240, 0.6);
+    }
+
+    .notebox p {
+      margin-bottom: 0.6rem;
+    }
+
+    .notebox p:last-child {
+      margin-bottom: 0;
+    }
+
+    .notebox .label {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #8f8472;
+      border-bottom: 2px dotted #c6bbaa;
+      padding-bottom: 2px;
+      margin-bottom: 0.8rem;
+    }
+
+    /* --- 卡片网格 --- */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.8rem;
+      margin: 2.4rem 0 1.6rem;
+    }
+
+    .card {
+      background: #fffffffb;
+      border-radius: 28px;
+      padding: 1.8rem 1.4rem 1.6rem;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02), 0 0 0 1px #eae3d8 inset;
+      transition: transform 0.15s ease, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04), 0 0 0 1px #d6ccbc inset;
+    }
+
+    .card h3 {
+      font-weight: 500;
+      font-size: 1.2rem;
+      letter-spacing: 0.01em;
+      color: #302a22;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card h3 small {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: #a79987;
+      margin-left: auto;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #403a32;
+    }
+
+    /* --- 内容段落 --- */
+    .content-section {
+      margin: 2.4rem 0;
+    }
+
+    .content-section p {
+      margin-bottom: 1.2rem;
+    }
+
+    .content-section .inline-link {
+      color: #7c6b54;
+      text-decoration: none;
+      border-bottom: 1px solid #d0c4b2;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .content-section .inline-link:hover {
+      border-bottom-color: #7c6b54;
+      color: #4a3f32;
+    }
+
+    .separator {
+      width: 2.8rem;
+      height: 2px;
+      background: #cfc4b2;
+      margin: 2rem 0 1.2rem;
+    }
+
+    /* --- 引用块 --- */
+    blockquote {
+      background: #f3efe7;
+      padding: 1.2rem 1.8rem;
+      margin: 2rem 0 2.2rem;
+      border-radius: 60px 20px 20px 60px;
+      border-left: 6px solid #b8a68b;
+      font-style: normal;
+      color: #3e372f;
+    }
+
+    blockquote p {
+      margin-bottom: 0.4rem;
+    }
+
+    blockquote cite {
+      display: block;
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      color: #8a7d6b;
+    }
+
+    /* --- FAQ 摘要 --- */
+    .faq-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin: 2.2rem 0 1.8rem;
+      padding: 1.2rem 0;
+      border-top: 1px solid #e0d8cb;
+      border-bottom: 1px solid #e0d8cb;
+    }
+
+    .faq-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+    }
+
+    .faq-item .q {
+      font-weight: 500;
+      color: #4f463b;
+      min-width: 4.8em;
+    }
+
+    .faq-item .a {
+      color: #5d5448;
+      font-size: 0.92rem;
+    }
+
+    .faq-item .a a {
+      color: #7c6b54;
+      text-decoration: none;
+      border-bottom: 1px dashed #cbbfae;
+    }
+
+    .faq-item .a a:hover {
+      border-bottom-style: solid;
+    }
+
+    /* --- 页脚 --- */
+    .footer-note {
+      margin-top: 3.2rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #dfd7ca;
+      font-size: 0.85rem;
+      color: #857a6b;
+      text-align: left;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+
+    .footer-note a {
+      color: #6d5f4d;
+      text-decoration: none;
+      border-bottom: 1px solid #d4c8b6;
+    }
+
+    .footer-note a:hover {
+      border-bottom-color: #6d5f4d;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e3dbcf;
+      margin: 2.4rem 0 0.8rem;
+      opacity: 0.6;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .faq-item {
+        flex-direction: column;
+        gap: 0.15rem;
+      }
+
+      .faq-item .q {
+        min-width: auto;
+      }
+
+      .card-grid {
+        gap: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- 主视觉 -->
+    <div class="hero">
+      <h1>leyu<br>内容·连接·余裕</h1>
+      <div class="sub">从一个词开始，搭建有呼吸感的信息空间</div>
+    </div>
+
+    <!-- 第一段：自然引入 + 链接 -->
+    <div class="content-section">
+      <p>
+        一个平台的气质，往往藏在它反复提及的那个词里。如果你曾留意过 <a href="https://socket-leyu.com.cn" class="inline-link">leyu</a> 在页面中的位置，大概会注意到它并不喧哗——它更像一个安静的坐标，告诉来者：这里的内容是经过拣选的，这里的连接有它自己的节奏。
+      </p>
+      <p>
+        无论是浏览资讯、参与讨论，还是单纯想找一处可以静下来阅读的地方，这个词都在提醒你：信息不一定要汹涌，也可以像一段平实的叙述，慢慢展开。
+      </p>
+    </div>
+
+    <!-- 提示框 / 引用感 -->
+    <div class="notebox">
+      <span class="label">✦ 一点观察</span>
+      <p>在数字界面里，一个简洁的标识往往比长篇声明更有说服力。<strong>leyu</strong> 所代表的正是这种“少但清晰”的气质——不堆叠功能，而是留出空间，让内容本身成为主角。</p>
+    </div>
+
+    <!-- 信息卡片：用途 & 适合人群 -->
+    <div class="card-grid">
+      <div class="card">
+        <h3>日常阅读 <small>· 用途</small></h3>
+        <p>文章、笔记、随笔——适合那些想避开信息轰炸、专注在文字里的人。你可以把它看作一个安静的内容驿站。</p>
+      </div>
+      <div class="card">
+        <h3>轻量连接 <small>· 场景</small></h3>
+        <p>不需要复杂的社交压力，也不用被算法推着走。通过 <a href="https://socket-leyu.com.cn" style="color: #6d5f4d; text-decoration: underline dotted 1px;">leyu</a> 找到同类的内容节点，仅此而已。</p>
+      </div>
+      <div class="card">
+        <h3>写作者 <small>· 适合</small></h3>
+        <p>如果你有自己的博客、 newsletter 或内容页，leyu 提供了一种不打扰的露出方式——它更像是名片，而不是广告牌。</p>
+      </div>
+    </div>
+
+    <!-- 自然段落 + 引用块 -->
+    <div class="content-section">
+      <p>
+        从主题内容展开的角度看，<strong>leyu</strong> 并不把自己包装成无所不包的广场，它更接近一条长廊——两侧是精心排列的展品，你可以按照自己的步调走完，也可以随时在某一幅作品前停下来。这种节奏在当今的互联网里并不多见。
+      </p>
+      <blockquote>
+        <p>“最好的界面，是当你使用它时，几乎感觉不到界面的存在。leyu 所做的，就是尽量后退，把前面留给内容。”</p>
+        <cite>—— 来自早期用户的一次闲聊</cite>
+      </blockquote>
+      <p>
+        当然，这并不意味着它缺乏功能。相反，当视觉被简化、交互被克制之后，真正重要的东西才会浮现出来：文字的质量、观点的价值、以及人与人之间通过内容产生的微弱却真实的共鸣。
+      </p>
+    </div>
+
+    <!-- FAQ 摘要（简洁版） -->
+    <div class="faq-summary">
+      <div class="faq-item">
+        <span class="q">leyu 是什么？</span>
+        <span class="a">一个内容向的站点，围绕特定主题提供阅读与连接的可能。</span>
+      </div>
+      <div class="faq-item">
+        <span class="q">如何开始？</span>
+        <span class="a">直接打开 <a href="https://socket-leyu.com.cn">leyu</a>，从首页的文章或卡片入口探索即可。无需注册也能浏览大部分内容。</span>
+      </div>
+      <div class="faq-item">
+        <span class="q">适合哪些人？</span>
+        <span class="a">喜欢深度阅读、对信息噪音敏感、希望找到同类内容节点的用户。</span>
+      </div>
+    </div>
+
+    <!-- 最后一段 + 嵌入链接 -->
+    <div class="content-section" style="margin-bottom: 0.8rem;">
+      <p>
+        如果你也是那种会在一个页面上停留很久、反复读同一段话的人，也许 <a href="https://socket-leyu.com.cn" class="inline-link">leyu</a> 能给你带来一点意料之外的平静。它不承诺改变你的信息习惯，但至少提供了一种选择：在点击与滑动之外，还有阅读与停留。
+      </p>
+    </div>
+
+    <div class="separator"></div>
+
+    <!-- 页脚区 -->
+    <div class="footer-note">
+      <span>© 2025 · 内容卡片</span>
+      <span><a href="https://socket-leyu.com.cn">leyu</a> · 保持简单</span>
+    </div>
+
+    <hr>
+    <p style="font-size: 0.8rem; color: #ab9f8f; margin-top: 0.4rem; letter-spacing: 0.02em;">
+      本页基于信息卡片与叙述排版设计，所有内容均为主题展示，不构成任何引导或承诺。
+    </p>
+
+  </div>
+</body>
+</html>
