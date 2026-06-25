@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品说明 · 500彩票网官方介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f3f5f8;
+            color: #1e2a3a;
+            line-height: 1.65;
+            padding: 2.5rem 1.2rem;
+        }
+
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        /* 卡片系统 */
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #e6e9ef;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            padding: 1.8rem 2rem;
+            margin-bottom: 1.8rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03);
+        }
+
+        .hero {
+            background: linear-gradient(145deg, #ffffff 0%, #f8faff 100%);
+            border-left: 4px solid #3273dc;
+            border-radius: 18px;
+            padding: 2.8rem 2.2rem;
+            margin-bottom: 2.2rem;
+            box-shadow: 0 4px 14px rgba(50, 115, 220, 0.06);
+        }
+
+        .hero h1 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0b1b32;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            color: #3d4a5e;
+            max-width: 640px;
+            border-left: 2px solid #d0d7e2;
+            padding-left: 1.2rem;
+            margin-top: 0.3rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 550;
+            color: #14273e;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 1.3rem;
+            background: #3273dc;
+            border-radius: 4px;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.4rem;
+            margin-top: 0.5rem;
+        }
+
+        .highlight-item {
+            background: #f9fafc;
+            padding: 1.2rem 1.4rem;
+            border-radius: 14px;
+            border: 1px solid #eaedf2;
+        }
+
+        .highlight-item strong {
+            display: block;
+            font-size: 1.05rem;
+            color: #14273e;
+            margin-bottom: 0.3rem;
+        }
+
+        .highlight-item p {
+            font-size: 0.95rem;
+            color: #3a4a60;
+        }
+
+        .use-case {
+            background: #f7f9fc;
+            border-radius: 14px;
+            padding: 1.3rem 1.6rem;
+            border: 1px solid #e0e5ee;
+            margin: 0.6rem 0;
+        }
+
+        .use-case h3 {
+            font-size: 1.1rem;
+            font-weight: 540;
+            color: #1c3150;
+            margin-bottom: 0.6rem;
+        }
+
+        .use-case ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .use-case li {
+            padding: 0.4rem 0 0.4rem 1.6rem;
+            position: relative;
+            color: #2b3d57;
+            font-size: 0.95rem;
+        }
+
+        .use-case li::before {
+            content: "·";
+            position: absolute;
+            left: 0.2rem;
+            color: #3273dc;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .faq-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 1.4rem 1.8rem;
+            margin: 0.8rem 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .faq-card .q {
+            font-weight: 550;
+            color: #0f2847;
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-card .a {
+            color: #2f405b;
+            font-size: 0.95rem;
+        }
+
+        .notice-box {
+            background: #f1f5fe;
+            border-radius: 14px;
+            border: 1px solid #cad6e8;
+            padding: 1.4rem 1.8rem;
+            margin-top: 1rem;
+        }
+
+        .notice-box p {
+            font-size: 0.95rem;
+            color: #1f344e;
+        }
+
+        .text-link {
+            color: #1f4f9c;
+            text-decoration: none;
+            border-bottom: 1px solid #b7cde0;
+            transition: border-color 0.15s;
+        }
+
+        .text-link:hover {
+            border-bottom-color: #1f4f9c;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6e7e93;
+            border-top: 1px solid #dce2ec;
+            padding-top: 1.6rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            body {
+                padding: 1.5rem 0.8rem;
+            }
+
+            .hero {
+                padding: 2rem 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .card {
+                padding: 1.3rem 1.2rem;
+            }
+
+            .grid-2col {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .use-case {
+                padding: 1rem 1.2rem;
+            }
+
+            .faq-card {
+                padding: 1rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 440px) {
+            .hero .sub {
+                padding-left: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <h1>500彩票网官方 · 产品说明</h1>
+            <div class="sub">
+                彩票资讯平台 · 数据查询与信息聚合服务<br>
+                面向理性用户提供公开彩票资讯与历史开奖信息参考。
+            </div>
+        </div>
+
+        <!-- 摘要 -->
+        <div class="card">
+            <h2>摘要：信息聚合与参考定位</h2>
+            <p style="margin-bottom: 0.8rem;">
+                <a href="https://china-zhcn-500.com" class="text-link">500彩票网官方</a> 
+                作为彩票类综合信息平台，聚焦于开奖结果查询、彩种玩法介绍、走势图表分析等公开数据服务。平台本身不组织购彩、不提供抽奖入口，而是以信息聚合者的角色，帮助用户快速了解不同彩种的基本规则与历史数据。所有内容均基于合法公开来源整理，不构成任何投注建议或收益承诺。
+            </p>
+            <p style="color: #2f405b;">
+                从信息密度角度看，平台整合了双色球、大乐透、福彩3D、排列三等主流彩种的基础资料与历史开奖记录，适合作为数据回溯与规则查阅的辅助工具。
+            </p>
+        </div>
+
+        <!-- 亮点区 (2列卡片) -->
+        <div class="card">
+            <h2>产品亮点</h2>
+            <div class="grid-2col">
+                <div class="highlight-item">
+                    <strong>📊 结构化数据展示</strong>
+                    <p>开奖号码、奖池余额、历史期次以统一的表格与走势图呈现，便于横向对比与趋势观察。</p>
+                </div>
+                <div class="highlight-item">
+                    <strong>📋 彩种规则索引</strong>
+                    <p>不同地区、不同玩法的游戏规则、设奖方案、开奖频率均有分类说明，降低信息查找成本。</p>
+                </div>
+                <div class="highlight-item">
+                    <strong>🔍 多维度筛选</strong>
+                    <p>支持按彩种、年份、期号快速过滤历史数据，适合需要回溯特定时段信息的用户。</p>
+                </div>
+                <div class="highlight-item">
+                    <strong>⚙️ 轻量化界面</strong>
+                    <p>页面布局偏向工具属性，减少冗余装饰，重点突出数字与统计信息，减少阅读干扰。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 使用建议 / 场景 -->
+        <div class="card">
+            <h2>使用建议 · 常见场景</h2>
+            <div class="use-case">
+                <h3>场景一：历史开奖数据查询</h3>
+                <ul>
+                    <li>选择彩种后通过年份与期号快速定位目标开奖号码。</li>
+                    <li>利用走势图表观察号码出现频率与冷热分布，作为个人分析参考。</li>
+                </ul>
+            </div>
+            <div class="use-case">
+                <h3>场景二：玩法规则预习</h3>
+                <ul>
+                    <li>新接触某种地方彩种或高频彩玩法时，可先查阅平台整理的规则说明。</li>
+                    <li>了解设奖等级、奖金分配比例及开奖时间安排，避免信息模糊。</li>
+                </ul>
+            </div>
+            <div class="use-case">
+                <h3>场景三：理性信息对比</h3>
+                <ul>
+                    <li>将不同彩种的历史中奖概率与奖池累积情况进行客观对比。</li>
+                    <li>注意所有数据均基于历史公开记录，不代表未来结果。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="card">
+            <h2>FAQ 摘要 · 常见疑问</h2>
+            <div class="faq-card">
+                <div class="q">Q：平台是否直接销售彩票或提供代购？</div>
+                <div class="a">A：不提供。平台仅汇总公开的资讯与历史开奖数据，不接入任何购彩通道或支付系统。</div>
+            </div>
+            <div class="faq-card">
+                <div class="q">Q：历史数据更新频率如何？</div>
+                <div class="a">A：通常在各彩种官方开奖后同步更新，时效性依赖公开信息发布节奏，可能有分钟级延迟。</div>
+            </div>
+            <div class="faq-card">
+                <div class="q">Q：走势图表能否作为预测依据？</div>
+                <div class="a">A：走势图仅反映历史统计规律，彩票开奖为独立随机事件，任何图表均不具备预测功能。</div>
+            </div>
+            <p style="margin-top: 0.7rem; font-size: 0.9rem; color: #4b5f7a;">
+                更多细节可直接参考 <a href="https://china-zhcn-500.com" class="text-link">500彩票网官方</a> 页面内的说明文档与数据源标注。
+            </p>
+        </div>
+
+        <!-- 可信但克制的访问说明 -->
+        <div class="card">
+            <h2>访问说明 · 信息边界</h2>
+            <div class="notice-box">
+                <p>
+                    ① 本站所有内容均来自合法公开渠道，不包含任何赌博、博彩诱导或虚拟交易功能。<br>
+                    ② 提供的开奖数据仅供参考，请以官方彩票机构发布的最终公告为准。<br>
+                    ③ 建议用户保持理性认知，彩票游戏应基于个人娱乐与风险承受能力，切勿过度投入。<br>
+                    ④ 平台不存储用户投注行为数据，不收集个人敏感信息。
+                </p>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.95rem;">
+                如需查阅更完整的规则文档与数据更新日志，可访问 
+                <a href="https://china-zhcn-500.com" class="text-link">500彩票网官方</a> 
+                主页获取。在使用过程中如发现信息出入，建议交叉核对多个信源。
+            </p>
+        </div>
+
+        <!-- 底部 -->
+        <div class="footer-note">
+            <span>基于公开信息整理 · 理性参考 · 不构成任何投资或参与建议</span>
+        </div>
+    </div>
+</body>
+</html>
